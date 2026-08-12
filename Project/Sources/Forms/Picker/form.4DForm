@@ -1,0 +1,70 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"windowMinWidth": 200,
+	"windowMinHeight": 220,
+	"windowMaxWidth": 200,
+	"windowMaxHeight": 220,
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"destination": "detailScreen",
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"List Box1": {
+					"type": "listbox",
+					"left": 0,
+					"top": 0,
+					"width": 200,
+					"height": 220,
+					"events": [
+						"onClick",
+						"onDoubleClick"
+					],
+					"listboxType": "collection",
+					"scrollbarHorizontal": "hidden",
+					"scrollbarVertical": "automatic",
+					"dataSource": "Form:C1466.items",
+					"currentItemSource": "Form:C1466.selectedItem",
+					"selectionMode": "single",
+					"hideSystemHighlight": false,
+					"horizontalPadding": 5,
+					"verticalPadding": 5,
+					"method": "ObjectMethods/List Box1.4dm",
+					"resizingMode": "legacy",
+					"showHeaders": false,
+					"columns": [
+						{
+							"header": {
+								"name": "Header1",
+								"text": ""
+							},
+							"name": "Column1",
+							"dataSource": "This:C1470.label",
+							"footer": {
+								"name": "Footer1"
+							},
+							"textAlign": "left",
+							"enterable": false
+						}
+					]
+				}
+			}
+		}
+	],
+	"geometryStamp": 1,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
+}

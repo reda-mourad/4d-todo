@@ -1,0 +1,121 @@
+{
+	"tables": {
+		"TodoCategories": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 692,
+				"top": 173,
+				"width": 119.0390625,
+				"height": 104.33203125
+			},
+			"displayable_fields_count": 3
+		},
+		"TodoCategory": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 498,
+				"top": 172,
+				"width": 107.01431274414,
+				"height": 83.33203125
+			},
+			"displayable_fields_count": 2
+		},
+		"Utilisateur": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 429,
+				"top": 0,
+				"width": 126.36328125,
+				"height": 125.33203125
+			},
+			"displayable_fields_count": 4
+		},
+		"Patient": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 1206,
+				"top": 0,
+				"width": 144,
+				"height": 175.33203125
+			},
+			"displayable_fields_count": 6
+		},
+		"Todo": {
+			"color": {
+				"red": 255,
+				"green": 255,
+				"blue": 255,
+				"alpha": 0
+			},
+			"coordinates": {
+				"left": 875,
+				"top": 0,
+				"width": 129.046875,
+				"height": 209.33203125
+			},
+			"displayable_fields_count": 8
+		}
+	},
+	"relations": {
+		"5429422762794FB3907A49BDEE9E557B": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"90B91F7358514C3CA15A346388490038": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"78F7C6A88BBE4A7A85AF39733DD312F0": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"6159F10513054820871A7EA02BE94672": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		},
+		"448A4BA15B5747B7BEBC11423387E91E": {
+			"color": {
+				"red": 240,
+				"green": 240,
+				"blue": 240,
+				"alpha": 0
+			}
+		}
+	}
+}

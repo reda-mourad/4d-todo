@@ -1,0 +1,378 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"events": [
+		"onLoad",
+		"onClick"
+	],
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 95,
+					"left": 22,
+					"width": 259,
+					"height": 100,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"Input": {
+					"type": "input",
+					"left": 34,
+					"top": 105,
+					"width": 235,
+					"height": 80,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.todo.label"
+				},
+				"Text": {
+					"type": "text",
+					"text": "Tâche",
+					"top": 70,
+					"left": 22,
+					"width": 259,
+					"height": 15
+				},
+				"Rectangle1": {
+					"type": "rectangle",
+					"top": 399,
+					"left": 22,
+					"width": 259,
+					"height": 30,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 34,
+					"top": 406,
+					"width": 235,
+					"height": 16,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.due_date",
+					"entryFilter": "!0&9##/##/####"
+				},
+				"Text1": {
+					"type": "text",
+					"text": "Échéance",
+					"top": 371,
+					"left": 22,
+					"width": 259,
+					"height": 15
+				},
+				"Text5": {
+					"type": "text",
+					"text": "Clôturée le",
+					"top": 449,
+					"left": 22,
+					"width": 259,
+					"height": 15
+				},
+				"Rectangle6": {
+					"type": "rectangle",
+					"top": 472,
+					"left": 22,
+					"width": 259,
+					"height": 30,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"completedAtDisplay": {
+					"type": "input",
+					"left": 34,
+					"top": 479,
+					"width": 235,
+					"height": 16,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.completedAtLabel",
+					"enterable": false,
+					"focusable": false
+				},
+				"Rectangle2": {
+					"type": "rectangle",
+					"top": 243,
+					"left": 22,
+					"width": 259,
+					"height": 30,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"Text2": {
+					"type": "text",
+					"text": "Affecté à",
+					"top": 215,
+					"left": 22,
+					"width": 259,
+					"height": 15
+				},
+				"assigneeDisplay": {
+					"type": "input",
+					"left": 34,
+					"top": 250,
+					"width": 235,
+					"height": 16,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.todo.assignee.Nom",
+					"enterable": false,
+					"focusable": false
+				},
+				"btnAssignee": {
+					"type": "button",
+					"top": 243,
+					"left": 22,
+					"width": 259,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"method": "ObjectMethods/btnAssignee.4dm"
+				},
+				"Rectangle3": {
+					"type": "rectangle",
+					"top": 321,
+					"left": 22,
+					"width": 259,
+					"height": 30,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"Text3": {
+					"type": "text",
+					"text": "Patient",
+					"top": 293,
+					"left": 22,
+					"width": 259,
+					"height": 15
+				},
+				"patientDisplay": {
+					"type": "input",
+					"left": 34,
+					"top": 328,
+					"width": 235,
+					"height": 16,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "[Form:C1466.todo.patient.Nom; Form:C1466.todo.patient.Prénom].join(\" \"; ck ignore null or empty:K85:5)",
+					"enterable": false,
+					"focusable": false
+				},
+				"btnPatient": {
+					"type": "button",
+					"top": 321,
+					"left": 22,
+					"width": 259,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"method": "ObjectMethods/btnPatient.4dm"
+				},
+				"Rectangle4": {
+					"type": "rectangle",
+					"top": 20,
+					"left": 362,
+					"width": 150,
+					"height": 30,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"btnSave": {
+					"type": "button",
+					"top": 20,
+					"left": 362,
+					"width": 150,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"text": "💾 Sauvegarder",
+					"method": "ObjectMethods/btnSave.4dm"
+				},
+				"Rectangle7": {
+					"type": "rectangle",
+					"top": 20,
+					"left": 192,
+					"width": 150,
+					"height": 30,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"btnClose": {
+					"type": "button",
+					"top": 20,
+					"left": 192,
+					"width": 150,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"text": "✔️ Clôturer"
+				},
+				"List Box": {
+					"type": "listbox",
+					"left": 301,
+					"top": 95,
+					"width": 211,
+					"height": 407,
+					"events": [
+						"onClick"
+					],
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.categories",
+					"selectionMode": "none",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"resizingMode": "legacy",
+					"showHeaders": false,
+					"horizontalPadding": 5,
+					"verticalPadding": 5,
+					"selectedItemsSource": "Form:C1466.selectedCategories",
+					"hideSystemHighlight": true,
+					"verticalLineStroke": "transparent",
+					"horizontalLineStroke": "transparent",
+					"alternateFill": "automaticAlternate",
+					"columns": [
+						{
+							"header": {
+								"text": "",
+								"name": "Header0"
+							},
+							"name": "Column0",
+							"footer": {
+								"name": "Footer0"
+							},
+							"width": 28,
+							"textAlign": "center",
+							"enterable": false,
+							"dataSource": "Form:C1466.selectedCategories.query(\"ID = :1\"; This:C1470.ID).length>0 ? \"☑\" : \"☐\""
+						},
+						{
+							"header": {
+								"text": "Header1",
+								"name": "Header1"
+							},
+							"name": "Column1",
+							"footer": {
+								"name": "Footer1"
+							},
+							"enterable": false,
+							"dataSource": "This:C1470.label"
+						}
+					]
+				},
+				"Text4": {
+					"type": "text",
+					"text": "Catégories",
+					"top": 70,
+					"left": 301,
+					"width": 200,
+					"height": 15
+				},
+				"Rectangle5": {
+					"type": "rectangle",
+					"top": 20,
+					"left": 22,
+					"width": 150,
+					"height": 30,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"btnSave1": {
+					"type": "button",
+					"top": 20,
+					"left": 22,
+					"width": 150,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"text": "❌ Fermer",
+					"action": "cancel"
+				}
+			},
+			"entryOrder": [
+				"Input",
+				"btnAssignee",
+				"btnPatient",
+				"Input1",
+				"btnSave",
+				"List Box",
+				"btnSave1"
+			]
+		}
+	],
+	"geometryStamp": 175,
+	"editor": {
+		"groups": {
+			"Group": [
+				"Text5",
+				"Rectangle6",
+				"completedAtDisplay"
+			],
+			"Group1": [
+				"Rectangle1",
+				"Input1",
+				"Text1"
+			],
+			"Group2": [
+				"Rectangle3",
+				"Text3",
+				"patientDisplay",
+				"btnPatient"
+			],
+			"Group3": [
+				"Rectangle2",
+				"Text2",
+				"assigneeDisplay",
+				"btnAssignee"
+			],
+			"Group4": [
+				"Rectangle5",
+				"btnSave1"
+			],
+			"Group5": [
+				"Rectangle4",
+				"btnSave"
+			],
+			"Group6": [
+				"Rectangle7",
+				"btnClose"
+			],
+			"Group7": [
+				"List Box",
+				"Text4"
+			],
+			"Group8": [
+				"Rectangle",
+				"Input",
+				"Text"
+			]
+		},
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"formClass": "NewTodoForm",
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"method": "method.4dm"
+}

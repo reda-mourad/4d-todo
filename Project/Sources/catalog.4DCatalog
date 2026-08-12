@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE base SYSTEM "http://www.4d.com/dtd/2007/base.dtd" >
+<base name="4d-todo" uuid="780DFB5529A642C685AB27C2BC493D6D" collation_locale="en">
+	<schema name="DEFAULT_SCHEMA"/>
+	<table name="Todo" uuid="79A36313836C4338BEA8051B45085833" id="1">
+		<field name="ID" uuid="C3218B6E986748A0A763D6F0C869731B" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="patient_id" uuid="C04F76A9171E4A0D9D5456E235E86CC6" type="4" id="2"/>
+		<field name="label" uuid="CD38F80841E0471B8786432630DF3145" type="10" limiting_length="255" not_null="true" id="3"/>
+		<field name="created_at" uuid="EEB273F4AAD545F1AEAB7A21DC9914AF" type="4" id="4"/>
+		<field name="created_by" uuid="C1990DB45499485799E2EE20BB16E5D4" type="4" not_null="true" id="5"/>
+		<field name="assigned_to" uuid="543E77595B63432CB19485FC94D95255" type="4" not_null="true" id="6"/>
+		<field name="completed_at" uuid="FC851CD580004FA3B8C527724BA992A1" type="4" id="7"/>
+		<field name="due_date" uuid="902CB9BED3A042DE81044F5EB9D2C62A" type="8" id="8"/>
+		<primary_key field_name="ID" field_uuid="C3218B6E986748A0A763D6F0C869731B"/>
+	</table>
+	<table name="Patient" uuid="602F4B188AFC4D56BB41E59B1FEAEA5F" id="2">
+		<field name="NoDossier" uuid="8923206BB1334FE3A9280DA0DB89E691" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="Nom" uuid="674FB51438C246D9BC40D769E1C8D06D" type="10" limiting_length="255" not_null="true" id="2"/>
+		<field name="Prénom" uuid="689C569BEAAC481980CB87F78AF9454B" type="10" limiting_length="255" id="3"/>
+		<primary_key field_name="NoDossier" field_uuid="8923206BB1334FE3A9280DA0DB89E691"/>
+	</table>
+	<table name="Utilisateur" uuid="B6F978F9DC8742688C2BD3D3874451E9" id="3">
+		<field name="xNumUser" uuid="ED5F49C710FE4FB58FB5FAA28667596A" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="Nom" uuid="E5208FC24DF449F8BDD81E5CDEAFB575" type="10" limiting_length="255" id="2"/>
+		<primary_key field_name="xNumUser" field_uuid="ED5F49C710FE4FB58FB5FAA28667596A"/>
+	</table>
+	<table name="TodoCategory" uuid="E2EA79BA53C440C1B5C1BAFADA0C8257" id="4">
+		<field name="ID" uuid="41C7F9A53EC14ECCA9C0F6AC89EBA4BE" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="label" uuid="5CC9417E793A488A953310AA41FB6DF0" type="10" limiting_length="255" id="2"/>
+		<primary_key field_name="ID" field_uuid="41C7F9A53EC14ECCA9C0F6AC89EBA4BE"/>
+	</table>
+	<table name="TodoCategories" uuid="94B551BB9DEB46C1A96F816BD358F7A6" id="5">
+		<field name="ID" uuid="B6351EAB2D1C4E0C87CF6568B6294D68" type="4" unique="true" autosequence="true" not_null="true" id="1"/>
+		<field name="todo_id" uuid="56846A0602944B529A9F4619D91EA5AE" type="4" id="2"/>
+		<field name="category_id" uuid="6BD7689C2FA940C1B5183934B5B840F9" type="4" id="3"/>
+		<primary_key field_name="ID" field_uuid="B6351EAB2D1C4E0C87CF6568B6294D68"/>
+	</table>
+	<relation uuid="448A4BA15B5747B7BEBC11423387E91E" name_Nto1="patient" name_1toN="todos" state="1">
+		<related_field kind="source">
+			<field_ref uuid="C04F76A9171E4A0D9D5456E235E86CC6" name="patient_id">
+				<table_ref uuid="79A36313836C4338BEA8051B45085833" name="Todo"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="8923206BB1334FE3A9280DA0DB89E691" name="NoDossier">
+				<table_ref uuid="602F4B188AFC4D56BB41E59B1FEAEA5F" name="Patient"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="6159F10513054820871A7EA02BE94672" name_Nto1="creator" name_1toN="created_todos" state="1">
+		<related_field kind="source">
+			<field_ref uuid="C1990DB45499485799E2EE20BB16E5D4" name="created_by">
+				<table_ref uuid="79A36313836C4338BEA8051B45085833" name="Todo"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="ED5F49C710FE4FB58FB5FAA28667596A" name="xNumUser">
+				<table_ref uuid="B6F978F9DC8742688C2BD3D3874451E9" name="Utilisateur"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="78F7C6A88BBE4A7A85AF39733DD312F0" name_Nto1="assignee" name_1toN="assigned_todos" state="1">
+		<related_field kind="source">
+			<field_ref uuid="543E77595B63432CB19485FC94D95255" name="assigned_to">
+				<table_ref uuid="79A36313836C4338BEA8051B45085833" name="Todo"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="ED5F49C710FE4FB58FB5FAA28667596A" name="xNumUser">
+				<table_ref uuid="B6F978F9DC8742688C2BD3D3874451E9" name="Utilisateur"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="90B91F7358514C3CA15A346388490038" name_Nto1="todo" name_1toN="todoCategories" state="1">
+		<related_field kind="source">
+			<field_ref uuid="56846A0602944B529A9F4619D91EA5AE" name="todo_id">
+				<table_ref uuid="94B551BB9DEB46C1A96F816BD358F7A6" name="TodoCategories"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="C3218B6E986748A0A763D6F0C869731B" name="ID">
+				<table_ref uuid="79A36313836C4338BEA8051B45085833" name="Todo"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<relation uuid="5429422762794FB3907A49BDEE9E557B" name_Nto1="category" name_1toN="todoCategories" state="1">
+		<related_field kind="source">
+			<field_ref uuid="6BD7689C2FA940C1B5183934B5B840F9" name="category_id">
+				<table_ref uuid="94B551BB9DEB46C1A96F816BD358F7A6" name="TodoCategories"/>
+			</field_ref>
+		</related_field>
+		<related_field kind="destination">
+			<field_ref uuid="41C7F9A53EC14ECCA9C0F6AC89EBA4BE" name="ID">
+				<table_ref uuid="E2EA79BA53C440C1B5C1BAFADA0C8257" name="TodoCategory"/>
+			</field_ref>
+		</related_field>
+	</relation>
+	<index kind="regular" unique_keys="true" uuid="089B2BC0B94D4A27817C53B564FB5B1F" type="7">
+		<field_ref uuid="41C7F9A53EC14ECCA9C0F6AC89EBA4BE" name="ID">
+			<table_ref uuid="E2EA79BA53C440C1B5C1BAFADA0C8257" name="TodoCategory"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="0CB5C5BB25524D4AB31351C3A5483C6F" type="1">
+		<field_ref uuid="689C569BEAAC481980CB87F78AF9454B" name="Prénom">
+			<table_ref uuid="602F4B188AFC4D56BB41E59B1FEAEA5F" name="Patient"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="16EB756C96E14BD8ABA2849F474A1831" type="3">
+		<field_ref uuid="6BD7689C2FA940C1B5183934B5B840F9" name="category_id">
+			<table_ref uuid="94B551BB9DEB46C1A96F816BD358F7A6" name="TodoCategories"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="18418A9C36A84867A550683AFD029F68" type="7">
+		<field_ref uuid="B6351EAB2D1C4E0C87CF6568B6294D68" name="ID">
+			<table_ref uuid="94B551BB9DEB46C1A96F816BD358F7A6" name="TodoCategories"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="1B0DB394D477436D9E3292344FAE1AAF" type="1">
+		<field_ref uuid="E5208FC24DF449F8BDD81E5CDEAFB575" name="Nom">
+			<table_ref uuid="B6F978F9DC8742688C2BD3D3874451E9" name="Utilisateur"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="3BF950F3F15249BFB0C796F58C7A967F" type="1">
+		<field_ref uuid="674FB51438C246D9BC40D769E1C8D06D" name="Nom">
+			<table_ref uuid="602F4B188AFC4D56BB41E59B1FEAEA5F" name="Patient"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="3C4B5B1964954429B4CA8C153DFE03EA" type="3">
+		<field_ref uuid="C04F76A9171E4A0D9D5456E235E86CC6" name="patient_id">
+			<table_ref uuid="79A36313836C4338BEA8051B45085833" name="Todo"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="5E398092DDA54182ACFF44210DF5319E" type="7">
+		<field_ref uuid="C3218B6E986748A0A763D6F0C869731B" name="ID">
+			<table_ref uuid="79A36313836C4338BEA8051B45085833" name="Todo"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="5E95B62301DE40239F6428F35C0D2CCD" type="3">
+		<field_ref uuid="C1990DB45499485799E2EE20BB16E5D4" name="created_by">
+			<table_ref uuid="79A36313836C4338BEA8051B45085833" name="Todo"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="D814ECD7AFCA477D8419609DADA28954" type="7">
+		<field_ref uuid="8923206BB1334FE3A9280DA0DB89E691" name="NoDossier">
+			<table_ref uuid="602F4B188AFC4D56BB41E59B1FEAEA5F" name="Patient"/>
+		</field_ref>
+	</index>
+	<index kind="regular" unique_keys="true" uuid="D8EB114260B04A61942D5AFB7688D0A2" type="7">
+		<field_ref uuid="ED5F49C710FE4FB58FB5FAA28667596A" name="xNumUser">
+			<table_ref uuid="B6F978F9DC8742688C2BD3D3874451E9" name="Utilisateur"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="DF3C034AEECE4D8F9847FB2F9DC10421" type="3">
+		<field_ref uuid="56846A0602944B529A9F4619D91EA5AE" name="todo_id">
+			<table_ref uuid="94B551BB9DEB46C1A96F816BD358F7A6" name="TodoCategories"/>
+		</field_ref>
+	</index>
+	<index kind="regular" uuid="E42C07DF4FF247DF8DBE4BECC44515C9" type="3">
+		<field_ref uuid="543E77595B63432CB19485FC94D95255" name="assigned_to">
+			<table_ref uuid="79A36313836C4338BEA8051B45085833" name="Todo"/>
+		</field_ref>
+	</index>
+	<base_extra>
+		<journal_file journal_file_enabled="true"/>
+	</base_extra>
+</base>

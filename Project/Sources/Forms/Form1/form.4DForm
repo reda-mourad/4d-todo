@@ -1,0 +1,290 @@
+{
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"events": [
+		"onLoad",
+		"onClick",
+		"onDataChange"
+	],
+	"pages": [
+		{
+			"objects": {}
+		},
+		{
+			"objects": {
+				"lbTodos": {
+					"type": "listbox",
+					"left": 20,
+					"top": 70,
+					"width": 1120,
+					"height": 570,
+					"events": [
+						"onClick"
+					],
+					"listboxType": "collection",
+					"scrollbarHorizontal": "automatic",
+					"scrollbarVertical": "automatic",
+					"dataSource": "Form:C1466.todos",
+					"sizingX": "grow",
+					"sizingY": "grow",
+					"currentItemSource": "Form:C1466.selectedTodo",
+					"rowFillSource": "This:C1470.due_date=Null ? lk inherited : ((This:C1470.due_date-Current date)<1 ? \"#FECACA\" : ((This:C1470.due_date-Current date)<2 ? \"#FED7AA\" : lk inherited))",
+					"rowStrokeSource": "This:C1470.completed_at ? \"#9CA3AF\" : \"#111827\"",
+					"rowStyleSource": "This:C1470.todoCategories.category.extract(\"label\").indexOf(\"Urgent\")#-1 ? Bold:K14:2 : Plain:K14:1",
+					"selectionMode": "single",
+					"hideSystemHighlight": true,
+					"resizingMode": "legacy",
+					"horizontalPadding": 5,
+					"verticalPadding": 5,
+					"verticalLineStroke": "transparent",
+					"alternateFill": "automaticAlternate",
+					"columns": [
+						{
+							"header": {
+								"name": "Header4",
+								"text": "Statut"
+							},
+							"name": "Column4",
+							"dataSource": "This:C1470.completed_at ? \"✔️\" : (This:C1470.todoCategories.category.extract(\"label\").indexOf(\"Urgent\")#-1 ? \"🚨\" : \"⚠️\")",
+							"footer": {
+								"name": "Footer4"
+							},
+							"width": 76,
+							"textAlign": "center",
+							"fontStyle": "normal",
+							"fontSize": 18,
+							"enterable": false
+						},
+						{
+							"header": {
+								"text": "Tâche",
+								"name": "Header2"
+							},
+							"name": "Column2",
+							"footer": {
+								"name": "Footer2"
+							},
+							"dataSource": "This:C1470.label",
+							"width": 251,
+							"textAlign": "left",
+							"enterable": false,
+							"rowHeightAuto": true
+						},
+						{
+							"header": {
+								"name": "Header5",
+								"text": "Patient"
+							},
+							"name": "Column5",
+							"dataSource": "String:C10(This:C1470.patient.Nom)+\" \"+String:C10(This:C1470.patient.Prénom)",
+							"footer": {
+								"name": "Footer5"
+							},
+							"width": 150,
+							"textAlign": "left",
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header3",
+								"text": "Affecté à"
+							},
+							"name": "Column3",
+							"dataSource": "This:C1470.assignee.Nom",
+							"footer": {
+								"name": "Footer3"
+							},
+							"width": 130,
+							"textAlign": "left",
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header9",
+								"text": "Créateur"
+							},
+							"name": "Column9",
+							"dataSource": "This:C1470.creator.Nom",
+							"footer": {
+								"name": "Footer9"
+							},
+							"width": 130,
+							"textAlign": "left",
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header6",
+								"text": "Echéance"
+							},
+							"name": "Column6",
+							"dataSource": "This:C1470.due_date",
+							"dataSourceTypeHint": "date",
+							"footer": {
+								"name": "Footer6"
+							},
+							"textAlign": "left",
+							"enterable": false
+						},
+						{
+							"header": {
+								"name": "Header8",
+								"text": "Catégories"
+							},
+							"name": "Column8",
+							"dataSource": "This:C1470.todoCategories.category.extract(\"label\").join(\", \")",
+							"footer": {
+								"name": "Footer8"
+							},
+							"width": 190,
+							"textAlign": "left",
+							"enterable": false
+						}
+					]
+				},
+				"Rectangle": {
+					"type": "rectangle",
+					"top": 20,
+					"left": 20,
+					"width": 400,
+					"height": 30,
+					"borderRadius": 30,
+					"stroke": "#c0c0c0"
+				},
+				"inputSearch": {
+					"type": "input",
+					"left": 38,
+					"top": 26,
+					"width": 364,
+					"height": 18,
+					"placeholder": "🔍 Recherche par patient, responsable ou tâche…",
+					"dataSource": "Form:C1466.search",
+					"events": [
+						"onDataChange"
+					],
+					"fill": "transparent",
+					"borderStyle": "none"
+				},
+				"chkOnlyMine": {
+					"type": "checkbox",
+					"left": 430,
+					"top": 25,
+					"width": 180,
+					"height": 20,
+					"text": "Mes tâches seulement",
+					"dataSource": "Form:C1466.onlyMyTodos",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"chkOnlyToday": {
+					"type": "checkbox",
+					"left": 620,
+					"top": 25,
+					"width": 210,
+					"height": 20,
+					"text": "Tâches d'aujourd'hui",
+					"dataSource": "Form:C1466.onlyTodayTodos",
+					"events": [
+						"onDataChange"
+					]
+				},
+				"Rectangle1": {
+					"type": "rectangle",
+					"top": 20,
+					"left": 890,
+					"width": 200,
+					"height": 30,
+					"borderRadius": 30,
+					"fill": "#324E74",
+					"sizingX": "move",
+					"stroke": "#324E74"
+				},
+				"progress": {
+					"type": "rectangle",
+					"top": 21,
+					"left": 891,
+					"width": 118,
+					"height": 28,
+					"borderRadius": 28,
+					"fill": "#6495ed",
+					"stroke": "transparent",
+					"sizingX": "move"
+				},
+				"Input1": {
+					"type": "input",
+					"left": 900,
+					"top": 26,
+					"width": 180,
+					"height": 18,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.progressLabel",
+					"sizingX": "move",
+					"textAlign": "center",
+					"stroke": "#FFFFFF",
+					"enterable": false,
+					"focusable": false
+				},
+				"Rectangle3": {
+					"type": "rectangle",
+					"top": 20,
+					"left": 1110,
+					"width": 30,
+					"height": 30,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0",
+					"sizingX": "move"
+				},
+				"btnAdd": {
+					"type": "button",
+					"text": "➕ ",
+					"top": 20,
+					"left": 1110,
+					"width": 30,
+					"height": 30,
+					"events": [
+						"onClick"
+					],
+					"style": "custom",
+					"sizingX": "move"
+				}
+			}
+		}
+	],
+	"geometryStamp": 233,
+	"formClass": "TodoForm",
+	"editor": {
+		"groups": {
+			"Group": [
+				"Rectangle",
+				"inputSearch"
+			],
+			"Group1": [
+				"Rectangle1",
+				"progress",
+				"Input1"
+			],
+			"Group3": [
+				"Rectangle3",
+				"btnAdd"
+			],
+			"GroupFilters": [
+				"chkOnlyMine",
+				"chkOnlyToday"
+			]
+		},
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	},
+	"method": "method.4dm",
+	"rightMargin": 20,
+	"bottomMargin": 20,
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed"
+}
