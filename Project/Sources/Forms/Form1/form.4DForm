@@ -30,7 +30,7 @@
 					"sizingX": "grow",
 					"sizingY": "grow",
 					"currentItemSource": "Form:C1466.selectedTodo",
-					"rowFillSource": "This:C1470.due_date=Null ? lk inherited : ((This:C1470.due_date-Current date)<1 ? \"#FECACA\" : ((This:C1470.due_date-Current date)<2 ? \"#FED7AA\" : lk inherited))",
+					"rowFillSource": "This:C1470.completed_at ? lk inherited : (This:C1470.due_date=Null ? lk inherited : ((This:C1470.due_date-Current date)<1 ? \"#FECACA\" : ((This:C1470.due_date-Current date)<2 ? \"#FED7AA\" : lk inherited)))",
 					"rowStrokeSource": "This:C1470.completed_at ? \"#9CA3AF\" : \"#111827\"",
 					"rowStyleSource": "This:C1470.todoCategories.category.extract(\"label\").indexOf(\"Urgent\")#-1 ? Bold:K14:2 : Plain:K14:1",
 					"selectionMode": "single",
