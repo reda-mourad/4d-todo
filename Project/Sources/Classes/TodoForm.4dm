@@ -15,7 +15,7 @@ Class constructor($userId : Integer)
 	This.userId:=$userId
 	This.reload()
 	This.onlyMyTodos:=1
-	//This.onlyTodayTodos:=1
+	This.onlyTodayTodos:=1
 	This.onlyOpen:=1
 	
 	
