@@ -10,14 +10,14 @@ Case of
         OBJECT SET VISIBLE(*; "Rectangle7"; Form.isEditing)
         OBJECT SET TITLE(*; "btnClose"; Form.closeButtonLabel)
         OBJECT SET ENABLED(*; "btnClose"; (Form.isEditing & Form.canToggleClose))
-        If (Form.todo.assigned_to=Form.userId)
-            OBJECT SET ENTERABLE(*; "Input2"; obk enterable)
-            OBJECT SET RGB COLORS(*; "Rectangle8"; 0xA1A1AA; 0xFFFFFF)
+        If (Form.isEditing & Form.canToggleClose)
+            OBJECT SET RGB COLORS(*; "Rectangle7"; 0xC0C0C0; 0xFFFFFF)
         Else 
+            OBJECT SET RGB COLORS(*; "Rectangle7"; 0xD1D5DB; 0xE5E7EB)
+        End if 
+        If (Form.todo.completed_at#Null)
             OBJECT SET ENTERABLE(*; "Input2"; obk not enterable not focusable)
             OBJECT SET RGB COLORS(*; "Rectangle8"; 0xD1D5DB; 0xE5E7EB)
-        End if 
-        If (Not(Form.canEdit))
             OBJECT SET ENTERABLE(*; "Input"; obk not enterable not focusable)
             OBJECT SET ENTERABLE(*; "Input1"; obk not enterable not focusable)
             OBJECT SET ENABLED(*; "btnAssignee"; False)
@@ -29,11 +29,36 @@ Case of
             OBJECT SET RGB COLORS(*; "Rectangle3"; 0xD1D5DB; 0xE5E7EB)
             OBJECT SET RGB COLORS(*; "Rectangle4"; 0xD1D5DB; 0xE5E7EB)
         Else 
-            OBJECT SET RGB COLORS(*; "Rectangle"; 0xC0C0C0; 0xFFFFFF)
-            OBJECT SET RGB COLORS(*; "Rectangle1"; 0xC0C0C0; 0xFFFFFF)
-            OBJECT SET RGB COLORS(*; "Rectangle2"; 0xC0C0C0; 0xFFFFFF)
-            OBJECT SET RGB COLORS(*; "Rectangle3"; 0xC0C0C0; 0xFFFFFF)
-            OBJECT SET RGB COLORS(*; "Rectangle4"; 0xC0C0C0; 0xFFFFFF)
+            If ((Form.todo.assigned_to=Form.userId) & (Form.todo.completed_at=Null))
+                OBJECT SET ENTERABLE(*; "Input2"; obk enterable)
+                OBJECT SET RGB COLORS(*; "Rectangle8"; 0xA1A1AA; 0xFFFFFF)
+            Else 
+                OBJECT SET ENTERABLE(*; "Input2"; obk not enterable not focusable)
+                OBJECT SET RGB COLORS(*; "Rectangle8"; 0xD1D5DB; 0xE5E7EB)
+            End if 
+            If (Not(Form.canEdit))
+                OBJECT SET ENTERABLE(*; "Input"; obk not enterable not focusable)
+                OBJECT SET ENTERABLE(*; "Input1"; obk not enterable not focusable)
+                OBJECT SET ENABLED(*; "btnAssignee"; False)
+                OBJECT SET ENABLED(*; "btnPatient"; False)
+                OBJECT SET ENABLED(*; "btnSave"; ((Form.todo.assigned_to=Form.userId) & (Form.todo.completed_at=Null)))
+                OBJECT SET RGB COLORS(*; "Rectangle"; 0xD1D5DB; 0xE5E7EB)
+                OBJECT SET RGB COLORS(*; "Rectangle1"; 0xD1D5DB; 0xE5E7EB)
+                OBJECT SET RGB COLORS(*; "Rectangle2"; 0xD1D5DB; 0xE5E7EB)
+                OBJECT SET RGB COLORS(*; "Rectangle3"; 0xD1D5DB; 0xE5E7EB)
+                If ((Form.todo.assigned_to=Form.userId) & (Form.todo.completed_at=Null))
+                    OBJECT SET RGB COLORS(*; "Rectangle4"; 0xC0C0C0; 0xFFFFFF)
+                Else 
+                    OBJECT SET RGB COLORS(*; "Rectangle4"; 0xD1D5DB; 0xE5E7EB)
+                End if 
+            Else 
+                OBJECT SET ENABLED(*; "btnSave"; True)
+                OBJECT SET RGB COLORS(*; "Rectangle"; 0xC0C0C0; 0xFFFFFF)
+                OBJECT SET RGB COLORS(*; "Rectangle1"; 0xC0C0C0; 0xFFFFFF)
+                OBJECT SET RGB COLORS(*; "Rectangle2"; 0xC0C0C0; 0xFFFFFF)
+                OBJECT SET RGB COLORS(*; "Rectangle3"; 0xC0C0C0; 0xFFFFFF)
+                OBJECT SET RGB COLORS(*; "Rectangle4"; 0xC0C0C0; 0xFFFFFF)
+            End if 
         End if 
         
     : (Form event code=On Clicked)
@@ -67,18 +92,12 @@ Case of
                     Form.canEdit:=((Form.todo.created_by=Form.userId) & (Form.todo.completed_at=Null))
                     Form.closeButtonLabel:=Form.todo.completed_at=Null ? "✔️ Clôturer" : "↩️ Rouvrir"
                     OBJECT SET TITLE(*; "btnClose"; Form.closeButtonLabel)
-                    If (Form.canEdit)
-                        OBJECT SET ENTERABLE(*; "Input"; obk enterable)
-                        OBJECT SET ENTERABLE(*; "Input1"; obk enterable)
-                        OBJECT SET ENABLED(*; "btnAssignee"; True)
-                        OBJECT SET ENABLED(*; "btnPatient"; True)
-                        OBJECT SET ENABLED(*; "btnSave"; True)
-                        OBJECT SET RGB COLORS(*; "Rectangle"; 0xC0C0C0; 0xFFFFFF)
-                        OBJECT SET RGB COLORS(*; "Rectangle1"; 0xC0C0C0; 0xFFFFFF)
-                        OBJECT SET RGB COLORS(*; "Rectangle2"; 0xC0C0C0; 0xFFFFFF)
-                        OBJECT SET RGB COLORS(*; "Rectangle3"; 0xC0C0C0; 0xFFFFFF)
-                        OBJECT SET RGB COLORS(*; "Rectangle4"; 0xC0C0C0; 0xFFFFFF)
+                    If (Form.isEditing & Form.canToggleClose)
+                        OBJECT SET RGB COLORS(*; "Rectangle7"; 0xC0C0C0; 0xFFFFFF)
                     Else 
+                        OBJECT SET RGB COLORS(*; "Rectangle7"; 0xD1D5DB; 0xE5E7EB)
+                    End if 
+                    If (Form.todo.completed_at#Null)
                         OBJECT SET ENTERABLE(*; "Input"; obk not enterable not focusable)
                         OBJECT SET ENTERABLE(*; "Input1"; obk not enterable not focusable)
                         OBJECT SET ENABLED(*; "btnAssignee"; False)
@@ -89,8 +108,36 @@ Case of
                         OBJECT SET RGB COLORS(*; "Rectangle2"; 0xD1D5DB; 0xE5E7EB)
                         OBJECT SET RGB COLORS(*; "Rectangle3"; 0xD1D5DB; 0xE5E7EB)
                         OBJECT SET RGB COLORS(*; "Rectangle4"; 0xD1D5DB; 0xE5E7EB)
+                    Else 
+                        If (Form.canEdit)
+                            OBJECT SET ENTERABLE(*; "Input"; obk enterable)
+                            OBJECT SET ENTERABLE(*; "Input1"; obk enterable)
+                            OBJECT SET ENABLED(*; "btnAssignee"; True)
+                            OBJECT SET ENABLED(*; "btnPatient"; True)
+                            OBJECT SET ENABLED(*; "btnSave"; True)
+                            OBJECT SET RGB COLORS(*; "Rectangle"; 0xC0C0C0; 0xFFFFFF)
+                            OBJECT SET RGB COLORS(*; "Rectangle1"; 0xC0C0C0; 0xFFFFFF)
+                            OBJECT SET RGB COLORS(*; "Rectangle2"; 0xC0C0C0; 0xFFFFFF)
+                            OBJECT SET RGB COLORS(*; "Rectangle3"; 0xC0C0C0; 0xFFFFFF)
+                            OBJECT SET RGB COLORS(*; "Rectangle4"; 0xC0C0C0; 0xFFFFFF)
+                        Else 
+                            OBJECT SET ENTERABLE(*; "Input"; obk not enterable not focusable)
+                            OBJECT SET ENTERABLE(*; "Input1"; obk not enterable not focusable)
+                            OBJECT SET ENABLED(*; "btnAssignee"; False)
+                            OBJECT SET ENABLED(*; "btnPatient"; False)
+                            OBJECT SET ENABLED(*; "btnSave"; (Form.todo.assigned_to=Form.userId))
+                            OBJECT SET RGB COLORS(*; "Rectangle"; 0xD1D5DB; 0xE5E7EB)
+                            OBJECT SET RGB COLORS(*; "Rectangle1"; 0xD1D5DB; 0xE5E7EB)
+                            OBJECT SET RGB COLORS(*; "Rectangle2"; 0xD1D5DB; 0xE5E7EB)
+                            OBJECT SET RGB COLORS(*; "Rectangle3"; 0xD1D5DB; 0xE5E7EB)
+                            If (Form.todo.assigned_to=Form.userId)
+                                OBJECT SET RGB COLORS(*; "Rectangle4"; 0xC0C0C0; 0xFFFFFF)
+                            Else 
+                                OBJECT SET RGB COLORS(*; "Rectangle4"; 0xD1D5DB; 0xE5E7EB)
+                            End if 
+                        End if 
                     End if 
-                    If (Form.todo.assigned_to=Form.userId)
+                    If ((Form.todo.completed_at=Null) & (Form.todo.assigned_to=Form.userId))
                         OBJECT SET ENTERABLE(*; "Input2"; obk enterable)
                         OBJECT SET RGB COLORS(*; "Rectangle8"; 0xA1A1AA; 0xFFFFFF)
                     Else 

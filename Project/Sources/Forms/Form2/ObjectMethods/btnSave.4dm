@@ -5,22 +5,22 @@ var $todo : cs.TodoEntity
 
 If (Not(Form.canEdit))
 	CANCEL
-	QUIT METHOD
+	Return
 End if 
 
 If (Form.isEditing)
 	$todo:=ds.Todo.get(Form.todo.ID)
 	If ($todo=Null)
 		CANCEL
-		QUIT METHOD
+		Return
 	End if 
-	If ($todo.created_by#Form.userId)
+	If (($todo.created_by#Form.userId) & ($todo.assigned_to#Form.userId))
 		CANCEL
-		QUIT METHOD
+		Return
 	End if 
 	If ($todo.completed_at#Null)
 		CANCEL
-		QUIT METHOD
+		Return
 	End if 
 Else 
 	Form.todo.created_at:=cs.Timestamp.me.now()

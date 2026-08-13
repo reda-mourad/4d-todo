@@ -6,6 +6,7 @@
 	"events": [
 		"onLoad",
 		"onClick",
+		"onDoubleClick",
 		"onDataChange"
 	],
 	"pages": [
@@ -21,7 +22,8 @@
 					"width": 1279,
 					"height": 536,
 					"events": [
-						"onClick"
+						"onClick",
+						"onDoubleClick"
 					],
 					"listboxType": "collection",
 					"scrollbarHorizontal": "automatic",

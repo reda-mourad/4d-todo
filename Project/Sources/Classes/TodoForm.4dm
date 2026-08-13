@@ -30,6 +30,7 @@ Function filter()
 	var $result : cs.TodoSelection
 	var $total; $achieved : Integer
 	var $x1; $x2; $y1; $y2 : Real
+	var $settings : Object
 	
 	$filters:=[]
 	$keywords:=Split string(String(This.search); " "; sk ignore empty strings)
@@ -149,15 +150,13 @@ Function handleEvents()
 			
 			Case of 
 				: (FORM Event.objectName="btnAdd")
-					//462
-					//371
 					OBJECT GET COORDINATES(*; "btnAdd"; $x1; $y1; $x2; $y2)
 					CONVERT COORDINATES($x2; $y2; XY Current form; XY Main window)
 					cs.NewTodoForm.new(This.userId).dialog($x2-532; $y2)
 					This.reload()
 					
 					
-				: (FORM Event.objectName="lbTodos")
+				: (FORM Event.objectName="lbTodos") && Right click
 					This.editTask()
 					
 					
@@ -167,6 +166,18 @@ Function handleEvents()
 					
 			End case 
 			
+		: (Form event code=On Double Clicked)
+			If (FORM Event.objectName="lbTodos")
+				If (This.selectedTodo#Null)
+					If ((This.selectedTodo.assigned_to=This.userId) | (This.selectedTodo.created_by=This.userId))
+						If (This.selectedTodo.completed_at=Null)
+							This.completeTask()
+						Else 
+							This.reopenTask()
+						End if 
+					End if 
+				End if 
+			End if 
 			
 		: (Form event code=On Data Change)
 			
