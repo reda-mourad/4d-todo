@@ -103,7 +103,7 @@
 						{
 							"header": {
 								"name": "Header3",
-								"text": "Affecté à"
+								"text": "Attribué à"
 							},
 							"name": "Column3",
 							"dataSource": "This:C1470.assignee.Nom",
@@ -117,7 +117,7 @@
 						{
 							"header": {
 								"name": "Header9",
-								"text": "Créateur"
+								"text": "Créé par"
 							},
 							"name": "Column9",
 							"dataSource": "This:C1470.creator.Nom",

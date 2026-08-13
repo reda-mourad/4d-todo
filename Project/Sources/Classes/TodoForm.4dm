@@ -71,7 +71,7 @@ Function filter()
 	If ($filters.length>0)
 		This.todos:=$result.query($filters.join(" AND ")+" order By completed_at, due_date"; $settings)
 	Else 
-		This.todos:=ds.Todo.all()
+		This.todos:=ds.Todo.query("ID # null order By completed_at, due_date")
 	End if 
 	
 	$total:=This.todos.length

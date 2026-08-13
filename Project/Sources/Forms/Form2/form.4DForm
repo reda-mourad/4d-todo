@@ -81,7 +81,7 @@
 				},
 				"Text2": {
 					"type": "text",
-					"text": "Affecté à",
+					"text": "Attribué à",
 					"top": 181,
 					"left": 22,
 					"width": 259,
