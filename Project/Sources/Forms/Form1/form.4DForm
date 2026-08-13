@@ -18,7 +18,7 @@
 					"type": "listbox",
 					"left": 20,
 					"top": 99,
-					"width": 1140,
+					"width": 1279,
 					"height": 536,
 					"events": [
 						"onClick"
@@ -51,7 +51,7 @@
 							"footer": {
 								"name": "Footer4"
 							},
-							"width": 76,
+							"width": 50,
 							"textAlign": "center",
 							"fontStyle": "normal",
 							"fontSize": 18,
@@ -67,10 +67,24 @@
 								"name": "Footer2"
 							},
 							"dataSource": "This:C1470.label",
-							"width": 251,
+							"width": 300,
 							"textAlign": "left",
 							"enterable": false,
 							"rowHeightAuto": true
+						},
+						{
+							"header": {
+								"name": "Header8",
+								"text": "Catégories"
+							},
+							"name": "Column8",
+							"dataSource": "This:C1470.todoCategories.category.extract(\"label\").join(\", \")",
+							"footer": {
+								"name": "Footer8"
+							},
+							"width": 200,
+							"textAlign": "left",
+							"enterable": false
 						},
 						{
 							"header": {
@@ -96,7 +110,7 @@
 							"footer": {
 								"name": "Footer3"
 							},
-							"width": 130,
+							"width": 150,
 							"textAlign": "left",
 							"enterable": false
 						},
@@ -110,7 +124,7 @@
 							"footer": {
 								"name": "Footer9"
 							},
-							"width": 130,
+							"width": 150,
 							"textAlign": "left",
 							"enterable": false
 						},
@@ -126,19 +140,20 @@
 								"name": "Footer6"
 							},
 							"textAlign": "left",
-							"enterable": false
+							"enterable": false,
+							"width": 100
 						},
 						{
 							"header": {
-								"name": "Header8",
-								"text": "Catégories"
+								"name": "Header7",
+								"text": "Clôture"
 							},
-							"name": "Column8",
-							"dataSource": "This:C1470.todoCategories.category.extract(\"label\").join(\", \")",
+							"name": "Column7",
+							"dataSource": "This:C1470.completed_at ? [String:C10(cs:C1710.Timestamp.me.stampToDate(This:C1470.completed_at)); String:C10(cs:C1710.Timestamp.me.stampToTime(This:C1470.completed_at))].join(\" - \") : \"\"",
 							"footer": {
-								"name": "Footer8"
+								"name": "Footer7"
 							},
-							"width": 190,
+							"width": 150,
 							"textAlign": "left",
 							"enterable": false
 						}
@@ -196,7 +211,7 @@
 				"Rectangle1": {
 					"type": "rectangle",
 					"top": 20,
-					"left": 910,
+					"left": 1049,
 					"width": 200,
 					"height": 30,
 					"borderRadius": 30,
@@ -207,7 +222,7 @@
 				"progress": {
 					"type": "rectangle",
 					"top": 21,
-					"left": 911,
+					"left": 1050,
 					"width": 118,
 					"height": 28,
 					"borderRadius": 28,
@@ -217,7 +232,7 @@
 				},
 				"Input1": {
 					"type": "input",
-					"left": 920,
+					"left": 1059,
 					"top": 26,
 					"width": 180,
 					"height": 18,
@@ -233,7 +248,7 @@
 				"Rectangle3": {
 					"type": "rectangle",
 					"top": 20,
-					"left": 1130,
+					"left": 1269,
 					"width": 30,
 					"height": 30,
 					"borderRadius": 15,
@@ -244,7 +259,7 @@
 					"type": "button",
 					"text": "➕ ",
 					"top": 20,
-					"left": 1130,
+					"left": 1269,
 					"width": 30,
 					"height": 30,
 					"events": [
@@ -308,7 +323,7 @@
 			]
 		}
 	],
-	"geometryStamp": 309,
+	"geometryStamp": 312,
 	"formClass": "TodoForm",
 	"editor": {
 		"groups": {
