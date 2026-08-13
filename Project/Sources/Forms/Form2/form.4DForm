@@ -294,7 +294,9 @@
 					"height": 54,
 					"fill": "transparent",
 					"borderStyle": "none",
-					"dataSource": "Form:C1466.todo.comment"
+					"dataSource": "Form:C1466.todo.comment",
+					"enterable": false,
+					"focusable": false
 				},
 				"Text6": {
 					"type": "text",

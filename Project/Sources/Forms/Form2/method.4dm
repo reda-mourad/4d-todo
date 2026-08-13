@@ -10,6 +10,11 @@ Case of
         OBJECT SET VISIBLE(*; "Rectangle7"; Form.isEditing)
         OBJECT SET TITLE(*; "btnClose"; Form.closeButtonLabel)
         OBJECT SET ENABLED(*; "btnClose"; (Form.isEditing & Form.canToggleClose))
+        If (Form.todo.assigned_to=Form.userId)
+            OBJECT SET ENTERABLE(*; "Input2"; obk enterable)
+        Else 
+            OBJECT SET ENTERABLE(*; "Input2"; obk not enterable not focusable)
+        End if 
         If (Not(Form.canEdit))
             OBJECT SET ENTERABLE(*; "Input"; obk not enterable not focusable)
             OBJECT SET ENTERABLE(*; "Input1"; obk not enterable not focusable)
@@ -61,6 +66,11 @@ Case of
                         OBJECT SET ENABLED(*; "btnAssignee"; False)
                         OBJECT SET ENABLED(*; "btnPatient"; False)
                         OBJECT SET ENABLED(*; "btnSave"; False)
+                    End if 
+                    If (Form.todo.assigned_to=Form.userId)
+                        OBJECT SET ENTERABLE(*; "Input2"; obk enterable)
+                    Else 
+                        OBJECT SET ENTERABLE(*; "Input2"; obk not enterable not focusable)
                     End if 
                     ACCEPT
                 End if 
