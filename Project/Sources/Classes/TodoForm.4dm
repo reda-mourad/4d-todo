@@ -95,6 +95,12 @@ Function filter()
 	
 Function completeTask()
 	If (This.selectedTodo#Null)
+		
+		If (This.selectedTodo.assigned_to#This.userId)
+			ALERT("Vous ne pouvez pas terminer une tâche qui ne vous a pas été attribuée !"; "J'ai compris")
+			return 
+		End if 
+		
 		If ((This.selectedTodo.completed_at=Null) & ((This.selectedTodo.assigned_to=This.userId) | (This.selectedTodo.created_by=This.userId)))
 			This.selectedTodo.completed_at:=cs.Timestamp.me.now()
 			This.selectedTodo.save()
@@ -106,6 +112,12 @@ Function completeTask()
 	
 Function reopenTask()
 	If (This.selectedTodo#Null)
+		
+		If (This.selectedTodo.assigned_to#This.userId)
+			ALERT("Vous ne pouvez pas rouvrir une tâche que vous n'avez pas créée ou à laquelle vous n'avez pas été attribué !"; "J'ai compris")
+			return 
+		End if 
+		
 		If ((This.selectedTodo.completed_at#Null) & ((This.selectedTodo.assigned_to=This.userId) | (This.selectedTodo.created_by=This.userId)))
 			This.selectedTodo.completed_at:=Null
 			This.selectedTodo.save()
@@ -169,12 +181,10 @@ Function handleEvents()
 		: (Form event code=On Double Clicked)
 			If (FORM Event.objectName="lbTodos")
 				If (This.selectedTodo#Null)
-					If ((This.selectedTodo.assigned_to=This.userId) | (This.selectedTodo.created_by=This.userId))
-						If (This.selectedTodo.completed_at=Null)
-							This.completeTask()
-						Else 
-							This.reopenTask()
-						End if 
+					If (This.selectedTodo.completed_at=Null)
+						This.completeTask()
+					Else 
+						This.reopenTask()
 					End if 
 				End if 
 			End if 
