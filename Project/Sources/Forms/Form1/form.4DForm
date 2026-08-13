@@ -17,9 +17,9 @@
 				"lbTodos": {
 					"type": "listbox",
 					"left": 20,
-					"top": 70,
-					"width": 1120,
-					"height": 570,
+					"top": 99,
+					"width": 1140,
+					"height": 536,
 					"events": [
 						"onClick"
 					],
@@ -148,18 +148,18 @@
 					"type": "rectangle",
 					"top": 20,
 					"left": 20,
-					"width": 400,
+					"width": 700,
 					"height": 30,
 					"borderRadius": 30,
 					"stroke": "#c0c0c0"
 				},
 				"inputSearch": {
 					"type": "input",
-					"left": 38,
+					"left": 30,
 					"top": 26,
-					"width": 364,
+					"width": 680,
 					"height": 18,
-					"placeholder": "🔍 Recherche par patient, responsable ou tâche…",
+					"placeholder": "🔍 Rechercher une tâche, un patient, un membre du personnel ou une catégorie",
 					"dataSource": "Form:C1466.search",
 					"events": [
 						"onDataChange"
@@ -167,24 +167,26 @@
 					"fill": "transparent",
 					"borderStyle": "none"
 				},
-				"chkOnlyMine": {
-					"type": "checkbox",
-					"left": 430,
-					"top": 25,
-					"width": 180,
-					"height": 20,
-					"text": "Mes tâches seulement",
+				"rdoOnlyMine": {
+					"type": "radio",
+					"left": 147,
+					"top": 64,
+					"width": 111,
+					"height": 15,
+					"text": "Mes tâches à faire",
 					"dataSource": "Form:C1466.onlyMyTodos",
+					"radioGroup": "taskScope",
 					"events": [
+						"onClick",
 						"onDataChange"
 					]
 				},
 				"chkOnlyToday": {
 					"type": "checkbox",
-					"left": 620,
-					"top": 25,
-					"width": 210,
-					"height": 20,
+					"left": 449,
+					"top": 64,
+					"width": 128,
+					"height": 15,
 					"text": "Tâches d'aujourd'hui",
 					"dataSource": "Form:C1466.onlyTodayTodos",
 					"events": [
@@ -194,7 +196,7 @@
 				"Rectangle1": {
 					"type": "rectangle",
 					"top": 20,
-					"left": 890,
+					"left": 910,
 					"width": 200,
 					"height": 30,
 					"borderRadius": 30,
@@ -205,7 +207,7 @@
 				"progress": {
 					"type": "rectangle",
 					"top": 21,
-					"left": 891,
+					"left": 911,
 					"width": 118,
 					"height": 28,
 					"borderRadius": 28,
@@ -215,7 +217,7 @@
 				},
 				"Input1": {
 					"type": "input",
-					"left": 900,
+					"left": 920,
 					"top": 26,
 					"width": 180,
 					"height": 18,
@@ -231,7 +233,7 @@
 				"Rectangle3": {
 					"type": "rectangle",
 					"top": 20,
-					"left": 1110,
+					"left": 1130,
 					"width": 30,
 					"height": 30,
 					"borderRadius": 15,
@@ -242,7 +244,7 @@
 					"type": "button",
 					"text": "➕ ",
 					"top": 20,
-					"left": 1110,
+					"left": 1130,
 					"width": 30,
 					"height": 30,
 					"events": [
@@ -250,11 +252,63 @@
 					],
 					"style": "custom",
 					"sizingX": "move"
+				},
+				"rdoOnlyCreated": {
+					"type": "radio",
+					"left": 278,
+					"top": 64,
+					"width": 151,
+					"height": 15,
+					"text": "Tâches que j'ai déléguées",
+					"dataSource": "Form:C1466.onlyCreatedTodos",
+					"radioGroup": "taskScope",
+					"events": [
+						"onClick",
+						"onDataChange"
+					]
+				},
+				"rdoAllTodos": {
+					"type": "radio",
+					"left": 20,
+					"top": 64,
+					"width": 107,
+					"height": 15,
+					"text": "Toutes les tâches",
+					"dataSource": "Form:C1466.allTodos",
+					"radioGroup": "taskScope",
+					"events": [
+						"onClick",
+						"onDataChange"
+					]
+				},
+				"chkOnlyOpen": {
+					"type": "checkbox",
+					"left": 597,
+					"top": 64,
+					"width": 105,
+					"height": 15,
+					"text": "Tâches clôturées",
+					"dataSource": "Form:C1466.onlyOpen",
+					"events": [
+						"onClick",
+						"onDataChange"
+					]
 				}
-			}
+			},
+			"entryOrder": [
+				"inputSearch",
+				"btnAdd",
+				"rdoAllTodos",
+				"rdoOnlyMine",
+				"rdoOnlyCreated",
+				"chkOnlyToday",
+				"chkOnlyOpen",
+				"lbTodos",
+				"Input1"
+			]
 		}
 	],
-	"geometryStamp": 233,
+	"geometryStamp": 309,
 	"formClass": "TodoForm",
 	"editor": {
 		"groups": {
@@ -262,18 +316,21 @@
 				"Rectangle",
 				"inputSearch"
 			],
-			"Group1": [
+			"Group2": [
+				"rdoOnlyMine",
+				"rdoOnlyCreated",
+				"rdoAllTodos"
+			],
+			"Group4": [
+				"chkOnlyToday",
+				"chkOnlyOpen"
+			],
+			"Group5": [
 				"Rectangle1",
 				"progress",
-				"Input1"
-			],
-			"Group3": [
+				"Input1",
 				"Rectangle3",
 				"btnAdd"
-			],
-			"GroupFilters": [
-				"chkOnlyMine",
-				"chkOnlyToday"
 			]
 		},
 		"activeView": "View 1",

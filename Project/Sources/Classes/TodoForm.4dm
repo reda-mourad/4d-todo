@@ -6,14 +6,17 @@ property progress : Integer
 property search : Text
 property onlyMyTodos : Integer
 property onlyTodayTodos : Integer
+property onlyCreatedTodos : Integer
+property allTodos : Integer
+property onlyOpen : Integer
 
 
 Class constructor($userId : Integer)
-	ARRAY TEXT($components; 0)
-	COMPONENT LIST($components)
 	This.userId:=$userId
 	This.reload()
 	This.onlyMyTodos:=1
+	//This.onlyTodayTodos:=1
+	This.onlyOpen:=1
 	
 	
 Function reload()
@@ -36,6 +39,7 @@ Function filter()
 	$settings.parameters.keywords:=$keywords
 	$settings.parameters.assigned_to:=This.userId
 	$settings.parameters.due_date:=Current date()
+	$settings.parameters.created_by:=This.userId
 	
 	If ($keywords.length>0)
 		
@@ -50,10 +54,18 @@ Function filter()
 	
 	If (Bool(This.onlyMyTodos))
 		$filters.push("assigned_to = :assigned_to")
+	Else 
+		If (Bool(This.onlyCreatedTodos))
+			$filters.push("created_by = :created_by")
+		End if 
 	End if 
 	
 	If (Bool(This.onlyTodayTodos))
 		$filters.push("due_date = :due_date")
+	End if 
+	
+	If (Not(Bool(This.onlyOpen)))
+		$filters.push("completed_at = null")
 	End if 
 	
 	If ($filters.length>0)
@@ -118,8 +130,11 @@ Function editTask()
 	
 Function dialog()
 	var $window : Integer
+	var $user : cs.UtilisateurEntity
 	
+	$user:=ds.Utilisateur.get(This.userId)
 	$window:=Open form window("Form1"; Movable form dialog box)
+	SET WINDOW TITLE([String($user.Nom); "Gestion des tâches"].join(" : "; ck ignore null or empty); $window)
 	DIALOG("Form1"; This)
 	CLOSE WINDOW($window)
 	
@@ -146,11 +161,9 @@ Function handleEvents()
 					This.editTask()
 					
 					
-				: (FORM Event.objectName="chkOnlyMine")
+				: (FORM Event.objectName="rdo@") || (FORM Event.objectName="chk@")
 					This.filter()
 					
-				: (FORM Event.objectName="chkOnlyToday")
-					This.filter()
 					
 			End case 
 			
@@ -161,6 +174,9 @@ Function handleEvents()
 				: (FORM Event.objectName="inputSearch")
 					This.filter()
 					
+					
+					
 			End case 
 			
 	End case 
+	

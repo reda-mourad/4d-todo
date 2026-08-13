@@ -20,16 +20,16 @@
 					"top": 95,
 					"left": 22,
 					"width": 259,
-					"height": 100,
+					"height": 66,
 					"borderRadius": 15,
 					"stroke": "#c0c0c0"
 				},
 				"Input": {
 					"type": "input",
 					"left": 34,
-					"top": 105,
+					"top": 101,
 					"width": 235,
-					"height": 80,
+					"height": 54,
 					"fill": "transparent",
 					"borderStyle": "none",
 					"dataSource": "Form:C1466.todo.label"
@@ -44,7 +44,7 @@
 				},
 				"Rectangle1": {
 					"type": "rectangle",
-					"top": 399,
+					"top": 358,
 					"left": 22,
 					"width": 259,
 					"height": 30,
@@ -54,7 +54,7 @@
 				"Input1": {
 					"type": "input",
 					"left": 34,
-					"top": 406,
+					"top": 365,
 					"width": 235,
 					"height": 16,
 					"fill": "transparent",
@@ -65,43 +65,14 @@
 				"Text1": {
 					"type": "text",
 					"text": "Échéance",
-					"top": 371,
+					"top": 330,
 					"left": 22,
 					"width": 259,
 					"height": 15
-				},
-				"Text5": {
-					"type": "text",
-					"text": "Clôturée le",
-					"top": 449,
-					"left": 22,
-					"width": 259,
-					"height": 15
-				},
-				"Rectangle6": {
-					"type": "rectangle",
-					"top": 472,
-					"left": 22,
-					"width": 259,
-					"height": 30,
-					"borderRadius": 15,
-					"stroke": "#c0c0c0"
-				},
-				"completedAtDisplay": {
-					"type": "input",
-					"left": 34,
-					"top": 479,
-					"width": 235,
-					"height": 16,
-					"fill": "transparent",
-					"borderStyle": "none",
-					"dataSource": "Form:C1466.completedAtLabel",
-					"enterable": false,
-					"focusable": false
 				},
 				"Rectangle2": {
 					"type": "rectangle",
-					"top": 243,
+					"top": 209,
 					"left": 22,
 					"width": 259,
 					"height": 30,
@@ -111,7 +82,7 @@
 				"Text2": {
 					"type": "text",
 					"text": "Affecté à",
-					"top": 215,
+					"top": 181,
 					"left": 22,
 					"width": 259,
 					"height": 15
@@ -119,7 +90,7 @@
 				"assigneeDisplay": {
 					"type": "input",
 					"left": 34,
-					"top": 250,
+					"top": 216,
 					"width": 235,
 					"height": 16,
 					"fill": "transparent",
@@ -130,7 +101,7 @@
 				},
 				"btnAssignee": {
 					"type": "button",
-					"top": 243,
+					"top": 209,
 					"left": 22,
 					"width": 259,
 					"height": 30,
@@ -142,7 +113,7 @@
 				},
 				"Rectangle3": {
 					"type": "rectangle",
-					"top": 321,
+					"top": 280,
 					"left": 22,
 					"width": 259,
 					"height": 30,
@@ -152,7 +123,7 @@
 				"Text3": {
 					"type": "text",
 					"text": "Patient",
-					"top": 293,
+					"top": 252,
 					"left": 22,
 					"width": 259,
 					"height": 15
@@ -160,7 +131,7 @@
 				"patientDisplay": {
 					"type": "input",
 					"left": 34,
-					"top": 328,
+					"top": 287,
 					"width": 235,
 					"height": 16,
 					"fill": "transparent",
@@ -171,7 +142,7 @@
 				},
 				"btnPatient": {
 					"type": "button",
-					"top": 321,
+					"top": 280,
 					"left": 22,
 					"width": 259,
 					"height": 30,
@@ -227,9 +198,9 @@
 				"List Box": {
 					"type": "listbox",
 					"left": 301,
-					"top": 95,
+					"top": 94,
 					"width": 211,
-					"height": 407,
+					"height": 398,
 					"events": [
 						"onClick"
 					],
@@ -282,7 +253,7 @@
 					"top": 70,
 					"left": 301,
 					"width": 200,
-					"height": 15
+					"height": 16
 				},
 				"Rectangle5": {
 					"type": "rectangle",
@@ -305,6 +276,33 @@
 					"style": "custom",
 					"text": "❌ Fermer",
 					"action": "cancel"
+				},
+				"Rectangle8": {
+					"type": "rectangle",
+					"top": 426,
+					"left": 22,
+					"width": 259,
+					"height": 66,
+					"borderRadius": 15,
+					"stroke": "#c0c0c0"
+				},
+				"Input2": {
+					"type": "input",
+					"left": 34,
+					"top": 432,
+					"width": 235,
+					"height": 54,
+					"fill": "transparent",
+					"borderStyle": "none",
+					"dataSource": "Form:C1466.todo.comment"
+				},
+				"Text6": {
+					"type": "text",
+					"text": "Commentaire de clôture",
+					"top": 401,
+					"left": 22,
+					"width": 259,
+					"height": 15
 				}
 			},
 			"entryOrder": [
@@ -314,18 +312,14 @@
 				"Input1",
 				"btnSave",
 				"List Box",
-				"btnSave1"
+				"btnSave1",
+				"Input2"
 			]
 		}
 	],
-	"geometryStamp": 175,
+	"geometryStamp": 189,
 	"editor": {
 		"groups": {
-			"Group": [
-				"Text5",
-				"Rectangle6",
-				"completedAtDisplay"
-			],
 			"Group1": [
 				"Rectangle1",
 				"Input1",
@@ -363,6 +357,11 @@
 				"Rectangle",
 				"Input",
 				"Text"
+			],
+			"Group9": [
+				"Rectangle8",
+				"Input2",
+				"Text6"
 			]
 		},
 		"activeView": "View 1",
